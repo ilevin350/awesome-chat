@@ -8,11 +8,12 @@
 // Use jQuery document ready function to place send button click handler
 $(function(){ 
   $('#send').click(function(){ 
-    var data = { 
-      message: $('#message').val(), 
-      type:'userMessage' 
-    }; 
-    socket.send(JSON.stringify(data)); 
-    $('#message').val(''); 
+    alert("Hi!");
+    // var data = { 
+    //   message: $('#message').val(), 
+    //   type:'userMessage' 
+    // }; 
+    // socket.send(JSON.stringify(data)); 
+    // $('#message').val(''); 
   }); 
 }); 

@@ -1,7 +1,8 @@
-// var io = require('socket.io'); 
-
-// exports.initialize = function(server) { 
+// exports.initialize = function(app) {
+//   var io = require('socket.io');
+//   var server = require('http').createServer(app);
 //   io = io.listen(server); 
+//   server.listen(app.get('port'));
 //   io.sockets.on("connection", function(socket){ 
 //     socket.send(JSON.stringify(
 //       {type:'serverMessage', 
@@ -16,3 +17,4 @@
 //     }); 
 //   }); 
 // };
+

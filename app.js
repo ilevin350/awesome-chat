@@ -1,4 +1,5 @@
 var express = require('express');
+var http = require('http');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -6,7 +7,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
-//var sockets = require('./routes/sockets.js')
+var sockets = require('./routes/sockets.js')
 
 var app = express();
 
@@ -65,9 +66,21 @@ module.exports = app;
 // --------------------------------
 // Setup for socket.io server-side
 // --------------------------------
-// var server = require('http').createServer(app).listen(app.get('port'),
-//   function(){ 
-//     console.log("Express server listening on port " + app.get('port')); 
-// });
+//sockets.initialize(app);
 
-// sockets.initialize(server);
+var server = http.createServer(app);
+var io = require('socket.io').listen(server); 
+server.listen(app.get('port'));
+// io.sockets.on("connection", function(socket){ 
+//   socket.send(JSON.stringify(
+//     {type:'serverMessage', 
+//       message: 'Welcome to the most interesting chat room on earth!'})); 
+//   socket.on('message', function(message){ 
+//     message= JSON.parse(message); 
+//     if(message.type == "userMessage"){ 
+//       socket.broadcast.send(JSON.stringify(message)); 
+//       message.type = "myMessage"; 
+//       socket.send(JSON.stringify(message)); 
+//     } 
+//   }); 
+// }); 
